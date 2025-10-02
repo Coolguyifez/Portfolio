@@ -418,7 +418,7 @@
       event.preventDefault();
 
       // First: send message to YOU
-      emailjs.sendForm(process.env.EMAILJS_SERVICE_ID, process.env.EMAILJS_TEMPLATE, this)
+      emailjs.sendForm(process.env.EMAILJS_SERVICE_ID, process.env.EMAILJS_TEMPLATE_ID, this)
         .then(function() {
           console.log("📨 Message sent to me!");
 
