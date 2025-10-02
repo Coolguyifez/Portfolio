@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emmanuel Ifeanyi Ikukaiwe - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+        /* ====== Base Styling ====== */
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafb;
+      color: #1f2937;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    h1, h2, h3, h4 {
+      margin: 0;
+    }
+    section {
+      padding: 60px 20px;
+    }
+
+    /* ====== Header ====== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    header .container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+    nav {
+      display: flex;
+      gap: 35px; /* spacing between nav items */
+    }
+    nav a {
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    /* Mobile Nav */
+    .mobile-menu-icon {
+      display: none;
+      font-size: 35px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .mobile-nav {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      flex-direction: column;
+      gap: 20px;
+      background: white;
+      padding: 0 20px; /* padding only on sides */
+      position: absolute;
+      top: 80px;
+     
+      right: 1px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 999;
+      transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.3s ease;
+    }
+    .mobile-nav.show {
+      display: flex;
+      max-height: 300px; /* adjust if more links */
+      opacity: 1;
+      padding: 20px;
+    }
+    .mobile-nav a {
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+      text-align: center;
+    }
+    .mobile-nav a:last-child {
+      border-bottom: none;
+    }
+    
+
+    /* ====== Hero ====== */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding-top: 120px;
+      background: linear-gradient(to right, #eff6ff, #dbeafe);
+      text-align: left; /* so text aligns properly */
+      flex-wrap: wrap;  /* makes it responsive on mobile */
+    }
+    .hero img {
+      width: 250px;
+      height: 300px;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease-out;
+      flex-shrink: 0;
+    }
+    .hero-content {
+      max-width: 500px;
+      display: flex;
+      flex-direction: column; /* stack text and button vertically */
+      align-items: flex; /* left-align for desktop */
+      gap: 15px; /* spacing between text elements */
+    }
+    .hero-content h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .hero-content p {
+      /*max-width: 600px;*/
+      margin: 20px auto;
+      color: #4b5563;
+    }
+    .hero-content button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      margin-top: 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      align-self: flex-start; /* keep button under text */
+    }
+    .hero-content button:hover {
+      background: #1e40af;
+    }
+
+    /* ====== Sections ====== */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+    .skills-grid, .work-grid {
+      display: grid;
+      gap: 20px;
+    }
+    .skills-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .work-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .work-grid .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    /* ====== Contact ====== */
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input, textarea {
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    button.submit {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button.submit:hover {
+      background: #1e40af;
+    }
+
+    /* ====== Footer ====== */
+    footer {
+      background: white;
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #e5e7eb;
+      margin-top: 40px;
+      color: #6b7280;
+    }
+
+    /* ====== Animations ====== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* ====== Dark Mode (system preference) ====== */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #111827;
+        color: #f3f4f6;
+      }
+      header {
+        background: #1f2937;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      }
+      nav a:hover {
+        color: #93c5fd;
+      }
+      .hero {
+        background: linear-gradient(to right, #1e293b, #0f172a);
+      }
+      .hero p {
+        color: #d1d5db;
+      }
+      .card {
+        background: #1f2937;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      }
+      input, textarea {
+        background: #111827;
+        border: 1px solid #374151;
+        color: #f3f4f6;
+      }
+      footer {
+        background: #1f2937;
+        border-top: 1px solid #374151;
+        color: #9ca3af;
+      }
+      .mobile-nav { 
+        background: #1f2937; 
+      }
+      .mobile-nav a { 
+        border-bottom: 1px solid #374151; 
+      }
+    }
+    @media (max-width: 768px) {
+      .hero-content {
+        align-items: center ;
+        text-align: center ;
+      }
+
+      .hero-content button {
+        align-self: center ; /* button moves to middle */
+      }
+
+      nav { 
+        display: none; 
+      }
+      .mobile-menu-icon {
+       display: block; 
+      }
+
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>Ikukaiwe, Emmanuel</h1>
+      <nav>
+        <a href="#about" >About</a>
+        <a href="#skills" >Skills</a>
+        <a href="#work" >Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="mobile-menu-icon" onclick="toggleMenu()"><i id="menuIcon" class="fa-solid fa-bars"></i></div>
+    
+      <div class="mobile-nav" id="mobileNav">
+        <a href="#about" onclick="toggleMenu()">About</a>
+        <a href="#skills" onclick="toggleMenu()">Skills</a>
+        <a href="#work" onclick="toggleMenu()">Work</a>
+        <a href="#contact" onclick="toggleMenu()">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src="image/me.png" alt="Profile Picture">
+    <div class="hero-content">
+
+      <h2>Hi, I'm Emmanuel 👋</h2>
+      <p><b>WEB DEVELOPER | IT CONSULTANT | GRAPHIC DESIGNER</b> <br><br>Blending design and technology to build impactful digital experiences.....</p>
+      <button><a href="https://wa.me/2348154675347"><h3>Let's Get The Work Done</h3></a></button>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="container">
+    <h3>About Me</h3>
+    <p>
+     A multidisciplinary professional with expertise in UI/UX design, graphic design, web applications, 
+     IT support, network and database management, and virtual assistance. With a B.Sc. in Computer Science from the University of Benin (UNIBEN), 
+     I blend creativity with technical expertise to deliver solutions that are both visually striking and functionally effective.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="container">
+    <h3>Skills</h3>
+    <br>
+    <div class="skills-grid">
+      <div class="card"><img src="https://img.icons8.com/color/48/figma.png"/>Graphic Design</div>
+      <div class="card">UI/UX Design</div>
+      <div class="card">Product Design</div>
+      <div class="card">Web Development</div>
+      <div class="card">Database Management</div>
+      <div class="card">Virtual Assistance</div>
+      <div class="card">Problem Solving</div>
+      <div class="card">Creative Thinking</div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section id="work" class="container">
+    <h3>My Work</h3>
+    <br>
+    <div class="work-grid">
+      <div class="card"> <img src="image/Car website.png" alt="Car Website Project">
+        <h4>Car Website Design</h4>
+        <p>Designed an outstanding car website using Figma, focusing on user experience and sleek visuals.</p>
+      </div>
+      <div class="card">  <img src="image/record.png" alt="Student Record">
+        <h4>Health Advisory Web App</h4>
+        <p>Built a health advisory app with AI-driven chatbot features and a clean user interface for accessibility.</p>
+      </div>
+      <div class="card"> <img src="image/record.png" alt="Student Record">
+        <h4>Database & Student Records</h4>
+        <p>Managed student records and exam scheduling systems, improving efficiency at NIIT.</p>
+      </div>
+    </div>
+  </section>
+
+    <!-- Contact -->
+    <!-- Contact -->
+  <section id="contact" class="container">
+    <h3>Contact Me</h3>
+    <p>Let's connect and work together! Feel free to reach out via this form:</p>
+    <form id="contactForm">
+      <input type="text" name="from_name" placeholder="Your Name" required>
+      <input type="email" name="from_email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button class="submit" type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Connect with me:</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/ikukaiwe-emmanuel" target="_blank">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://www.instagram.com/efxion_tech" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://wa.me/2348154675347" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>  
+    <p>&copy; 2025 Emmanuel Ifeanyi Ikukaiwe</p>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- EmailJS SDK -->
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("zmAesOr8cvA8YjDKs"); // replace with your EmailJS Public Key
+    })();
+
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // First: send message to YOU
+      emailjs.sendForm("service_47pw3sk", "template_t1qdjka", this)
+        .then(function() {
+          console.log("📨 Message sent to me!");
+
+          // Second: send auto-reply to the visitor
+          return emailjs.sendForm("service_47pw3sk", "template_3yhz8xo", event.target);
+        })
+        .then(function() {
+          alert("✅ Message sent. I will reply shortly");
+        }, function(error) {
+          alert("❌ Failed to send. Please try again.");
+          console.error("Error:", error);
+        });
+    });
+
+    // Toggle Menu
+    function toggleMenu() {
+      const nav = document.getElementById("mobileNav");
+      const icon = document.getElementById("menuIcon");
+      if (nav.classList.contains("show")) {
+        nav.classList.remove("show");
+        icon.classList.remove("fa-times");
+        icon.classList.add("fa-bars");
+      } else {
+        nav.classList.add("show");
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-times");
+      }
+    }
+  </script>
+
+</body>
+</html>
