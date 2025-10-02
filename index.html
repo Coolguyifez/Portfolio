@@ -411,19 +411,19 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
    // Initialize EmailJS with env variable
-    emailjs.init(process.env.EMAILJS_PUBLIC_KEY); // replace with your EmailJS Public Key
+    emailjs.init("zmAesOr8cvA8YjDKs"); // replace with your EmailJS Public Key
  
 
     document.getElementById("contactForm").addEventListener("submit", function(event) {
       event.preventDefault();
 
       // First: send message to YOU
-      emailjs.sendForm(process.env.EMAILJS_SERVICE_ID, process.env.EMAILJS_TEMPLATE_ID, this)
+      emailjs.sendForm("service_47pw3sk", "template_t1qdjka", this)
         .then(function() {
           console.log("📨 Message sent to me!");
 
           // Second: send auto-reply to the visitor
-          return emailjs.sendForm(process.env.EMAILJS_SERVICE_ID, process.env.EMAILJS_REPLY_TEMPLATE_ID, event.target);
+          return emailjs.sendForm("service_47pw3sk", "template_3yhz8xo", event.target);
         })
         .then(function() {
           alert("✅ Message sent. I will reply shortly");
