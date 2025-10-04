@@ -192,7 +192,7 @@
       display: block;
     }
 
-    /* ====== Contact ====== */
+       /* Contact Form Styles */
     form {
       max-width: 500px;
       margin: auto;
@@ -200,24 +200,61 @@
       flex-direction: column;
       gap: 15px;
     }
-    input, textarea {
+
+    form input,
+    form textarea,
+    form select {
       padding: 12px;
+      font-size: 16px;
       border: 1px solid #d1d5db;
       border-radius: 8px;
-      font-size: 1rem;
+      font-family: inherit;
+      background: #fff;
+      color: #1f2937;
+      transition: border 0.3s, box-shadow 0.3s;
     }
+
+    /* Add focus glow */
+    form input:focus,
+    form textarea:focus,
+    form select:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+      outline: none;
+    }
+
+    /* Dropdown styling */
+    form select {
+      appearance: none; /* remove default arrow */
+      background: url("https://img.icons8.com/ios-glyphs/30/000000/expand-arrow--v1.png") no-repeat right 12px center;
+      background-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Button */
     button.submit {
       background: #2563eb;
       color: white;
       border: none;
-      padding: 12px;
-      font-size: 1rem;
+      padding: 14px;
+      font-size: 16px;
       border-radius: 8px;
       cursor: pointer;
       transition: background 0.3s;
     }
+
     button.submit:hover {
       background: #1e40af;
+    }
+    
+    /* ====== Footer ====== */
+    footer {
+      background: white;
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #e5e7eb;
+      margin-top: 40px;
+      color: #6b7280;
     }
 
     /* ====== Footer ====== */
@@ -259,11 +296,37 @@
         background: #1f2937;
         box-shadow: 0 4px 12px rgba(0,0,0,0.6);
       }
-      input, textarea {
-        background: #111827;
-        border: 1px solid #374151;
-        color: #f3f4f6;
+      /* 🌙 Form fields */
+      input,
+      textarea,
+      select {
+        background: #111827 !important;
+        border: 1px solid #374151 !important;
+        color: #f3f4f6 !important;
+        transition: background 0.3s, color 0.3s, border 0.3s !important;
       }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #9ca3af !important;
+      }
+
+      select {
+        appearance: none !important;
+        background: #111827 url("https://img.icons8.com/ios-glyphs/30/ffffff/expand-arrow--v1.png")
+          no-repeat right 12px center !important;
+        background-size: 16px !important;
+        padding-right: 35px !important;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3) !important;
+        outline: none !important;
+      }
+      
       footer {
         background: #1f2937;
         border-top: 1px solid #374151;
@@ -335,8 +398,8 @@
     <h3>About Me</h3>
     <p>
      A multidisciplinary professional with expertise in UI/UX design, graphic design, web applications, 
-     IT support, network and database management, and virtual assistance. With a B.Sc. in Computer Science from the University of Benin (UNIBEN), 
-     I blend creativity with technical expertise to deliver solutions that are both visually striking and functionally effective.
+     IT support and network/Adminstrative management. With a B.Sc. in Computer Science from the University of Benin, Nigeria (UNIBEN), and a diploma in Web development from NIIT, 
+     I help businesses and individuals blend creativity with technical expertise to deliver solutions that are both visually striking and functionally effective.
     </p>
   </section>
 
@@ -384,6 +447,24 @@
     <form id="contactForm">
       <input type="text" name="from_name" placeholder="Your Name" required>
       <input type="email" name="from_email" placeholder="Your Email" required>
+      
+      <label for="service">Choose a Service:</label>
+      <select name="service" id="service" required>
+        <option value="">-- Select a Service --</optionh>
+        <option value="Web Design">Web Design & Development</option>
+        <option value="Branding">Branding</option>
+        <option value="Graphic Design">Graphic Design</option>
+        <option value="UI/UX Design">UI/UX Design</option>
+        <option value="Branding">Branding</option>
+        <option value="Network mgt">Network Management/</option>
+        <option value="IT Const">IT Consultant</option>
+        <option value="IT Support">IT Support</option>
+        <option value="Admin">Adminstrative Support</option>
+        <option value="Virtual ass">Virtual Assitant</option>
+        
+        
+      </select>
+      
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
       <button class="submit" type="submit">Send Message</button>
     </form>
