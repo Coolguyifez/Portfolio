@@ -419,12 +419,12 @@
       event.preventDefault();
 
       // First: send message to YOU
-      emailjs.sendForm("service_47pw3sk", "template_t1qdjka", this)
+      emailjs.sendForm("service_kldjk46", "template_t1qdjka", this)
         .then(function() {
           console.log("📨 Message sent to me!");
 
           // Second: send auto-reply to the visitor
-          return emailjs.sendForm("service_47pw3sk", "template_3yhz8xo", event.target);
+          return emailjs.sendForm("service_kldjk46", "template_3yhz8xo", event.target);
         })
         .then(function() {
           alert("✅ Message sent. I will reply shortly");
