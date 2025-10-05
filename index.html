@@ -150,20 +150,65 @@
       background: #1e40af;
     }
 
-    /* ====== Sections ====== */
+   /* ====== Skills ====== */
     .container {
       max-width: 1100px;
       margin: auto;
     }
-    .skills-grid, .work-grid {
-      display: grid;
-      gap: 20px;
-    }
+
     .skills-grid {
+      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap:30px;
     }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: white;
+      border-radius: 30px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    /* === FIXED: Horizontal Icon Row === */
+    .icon-row {
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 5px !important;
+      flex-wrap: nowrap !important;
+      margin-bottom: 10px !important;
+      
+    }
+
+    .icon-row img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 20px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .icon-row img:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.5));
+    }
+
+    /* ====== Work ====== */
     .work-grid {
+      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
     }
     .work-grid .card img {
       width: 100%;
@@ -171,25 +216,6 @@
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 15px;
-    }
-    .card {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-
-    .card img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-      margin-bottom: 15px;
-      display: block;
     }
 
        /* Contact Form Styles */
@@ -370,7 +396,14 @@
       .mobile-menu-icon {
        display: block; 
       }
+       .icon-row img  {
+        width: 45px;
+        height: 45px;
+      }  
 
+      .card p {
+        text-size-adjust: 400px;
+      }
     }
   </style>
 </head>
@@ -417,22 +450,95 @@
     </p>
   </section>
 
-  <!-- Skills -->
+   <!-- Skills -->
   <section id="skills" class="container">
     <h3>Skills</h3>
     <br>
     <div class="skills-grid">
-      <div class="card"><img src="https://img.icons8.com/color/48/figma.png"/>Graphic Design</div>
-      <div class="card">UI/UX Design</div>
-      <div class="card">Product Design</div>
-      <div class="card">Web Development</div>
-      <div class="card">Database Management</div>
-      <div class="card">Virtual Assistance</div>
-      <div class="card">Problem Solving</div>
-      <div class="card">Creative Thinking</div>
+      <div class="card">
+        <div class="icon-row">
+          <img src="image/ps.png" alt="Photoshop">
+          <img src="image/AI.png" alt="Illustrator">
+          <img src="image/Canva.png" alt="Canva">
+
+        </div>
+        <p>Graphic Design</p>
+      </div>
+
+      <div class="card">
+        <div class="icon-row">
+          <img src="image/Figma.png" alt="Figma"/>
+          <img src="image/Canva.png" alt="Canva">
+          <img src="image/Wordpress.png" alt="Wordpress">
+        </div>
+        <p>UI/UX Design</p>
+      </div>
+
+      <div class="card">
+        <div class="icon-row">
+          <img src="image/Html5.png" alt="HTML">
+          <img src="image/vs.png" alt="CSS">
+          <img src="image/python.png" alt="python">
+          <img src="image/php.png" alt="php">
+        </div>
+        <p>Web Development</p>
+      </div>
+      <div class="card">
+        <div class="icon-row">
+           <img src="image/Pr.png" alt="premier">
+           <img src="image/CAPCUT.png">
+        </div>  
+        <p>Multimedia</p>
+      </div>
+      <div class="card">
+        <div class="icon-row">
+          <img src="image/google 1.png" alt="Google tools">
+          <img src="image/Asana.png" alt="Asana">
+          <img src="image/Trello.png" alt="Trello">
+          <img src="image/Booking.png" alt="Booking">
+          
+        </div>
+        <p>Virtual Assistance</p>
+      </div>
+      <div class="card">
+        <div class="icon-row">
+          <img src="image/Network.png" alt="Networking">
+          <img src="image/WIFI.png" alt="Wifi">
+          <img src="image/Cisco.png" alt="Cisco">
+
+        </div>
+        <p>ICT Networking</p>
+      </div>
+      <div class="card">
+        <div class="icon-row">
+          <img src="image/Hardware.png" alt="Hardware">
+        </div>
+        <p>Troubleshooting Computer Hardware & Networking</p>
+      </div>
+      
+       <div class="card">
+        <div class="icon-row">
+          <img src="image/bulb.png" alt="ideas">
+        </div>
+        <p>Problem Solving</p>
+      </div>
+      
+      <div class="card">
+        <div class="icon-row">
+          <img src="image/thinking.png" alt="thinking">
+        </div>
+        <p>Creative Thinking</p>
+      </div>
+      <div class="card">
+        <div class="icon-row">
+          <img src="image/Team work.png" alt="Team">
+        </div>
+        <p>Team Work</p>
+      </div>
+      
+
     </div>
   </section>
-
   <!-- Work -->
   <section id="work" class="container">
     <h3>My Work</h3>
